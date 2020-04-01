@@ -27,8 +27,8 @@ Results in a JSON response (p. 5)
     "user": {
       "name": "Joe Bob",
       "email": "joe.bob@foo.com"
- 　 }
-　}
+    }
+  }
 }
 ```
 
