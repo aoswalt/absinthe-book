@@ -6,9 +6,9 @@ defmodule PlateSlate.Mixfile do
       app: :plate_slate,
       version: "0.0.1",
       elixir: "~> 1.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -26,8 +26,8 @@ defmodule PlateSlate.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "dev/support", "test/support"]
-  defp elixirc_paths(:dev),  do: ["lib", "dev/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(:dev), do: ["lib", "dev/support"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -46,7 +46,7 @@ defmodule PlateSlate.Mixfile do
       {:absinthe, "~> 1.4.2"},
       {:absinthe_plug, "~> 1.4.0"},
       {:absinthe_phoenix, "~> 1.4.0"},
-      {:absinthe_relay, "~> 1.4.0"},
+      {:absinthe_relay, "~> 1.4.0"}
     ]
   end
 
