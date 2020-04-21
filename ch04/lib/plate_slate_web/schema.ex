@@ -62,6 +62,5 @@ defmodule PlateSlateWeb.Schema do
     field :description, :string
     field :added_on, :date
     field :price, :float
-    field :added_on, :date
   end
 end
