@@ -8,3 +8,4 @@ Each chapter has my notes and the final code after working through it.
 * [Chapter 2 - Building a Schema](./ch02/README.md)
 * [Chapter 3 - Taking User Input](./ch03/README.md)
 * [Chapter 4 - Adding Flexibility](./ch04/README.md)
+* [Chapter 5 - Making a Change with Mutations](./ch05/README.md)
