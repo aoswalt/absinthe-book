@@ -33,7 +33,7 @@ defmodule PlateSlateWeb.Schema.MenuTypes do
     field :name, :string
     field :description, :string
     field :added_on, :date
-    field :price, :float
+    field :price, :decimal
   end
 
   object :category do

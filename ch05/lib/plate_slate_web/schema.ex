@@ -25,6 +25,17 @@ defmodule PlateSlateWeb.Schema do
     end
   end
 
+  scalar :decimal do
+    parse fn
+      %{value: value}, _ ->
+        Decimal.parse(value)
+      _, _ ->
+        :error
+    end
+
+    serialize &to_string/1
+  end
+
   query do
     @desc "The list of available items on the menu"
     field :menu_items, list_of(:menu_item) do
