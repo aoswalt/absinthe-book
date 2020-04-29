@@ -49,4 +49,11 @@ defmodule PlateSlateWeb.Schema do
       resolve &Resolvers.Menu.search/3
     end
   end
+
+  mutation do
+    field :create_menu_item, :menu_item do
+      arg :input, non_null(:menu_item_input)
+      resolve &Resolvers.Menu.create_item/3
+    end
+  end
 end
