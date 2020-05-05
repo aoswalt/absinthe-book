@@ -5,7 +5,7 @@ defmodule PlateSlate.Repo.Migrations.CreateOrders do
     create table(:orders) do
       add :customer_number, :integer
       add :items, :map
-      add :ordered_at, :utc_datetime, new_valuell: false, default: fragment("now()")
+      add :ordered_at, :utc_datetime, null: false, default: fragment("now()")
       add :state, :string, null: false, default: "created"
 
       timestamps()
