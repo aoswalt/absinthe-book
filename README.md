@@ -9,3 +9,4 @@ Each chapter has my notes and the final code after working through it.
 * [Chapter 3 - Taking User Input](./ch03/README.md)
 * [Chapter 4 - Adding Flexibility](./ch04/README.md)
 * [Chapter 5 - Making a Change with Mutations](./ch05/README.md)
+* [Chapter 6 - Going Live With Subscriptions](./ch06/README.md)
