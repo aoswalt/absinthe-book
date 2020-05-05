@@ -19,6 +19,7 @@ defmodule PlateSlateWeb.Router do
     forward "/api", Absinthe.Plug, schema: PlateSlateWeb.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: PlateSlateWeb.Schema
+      schema: PlateSlateWeb.Schema,
+      socket: PlateSlateWeb.UserSocket
   end
 end
