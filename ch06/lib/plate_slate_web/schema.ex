@@ -68,4 +68,12 @@ defmodule PlateSlateWeb.Schema do
       resolve &Resolvers.Menu.create_item/3
     end
   end
+
+  subscription do
+    field :new_order, :order do
+      config fn _args, _info ->
+        {:ok, topic: "*"}
+      end
+    end
+  end
 end
