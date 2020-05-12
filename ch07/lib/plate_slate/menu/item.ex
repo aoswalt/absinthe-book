@@ -10,6 +10,7 @@ defmodule PlateSlate.Menu.Item do
     field :description, :string
     field :name, :string
     field :price, :decimal
+    field :allergy_info, {:array, :map}
 
     belongs_to :category, PlateSlate.Menu.Category
 

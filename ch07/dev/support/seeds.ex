@@ -1,5 +1,4 @@
 defmodule PlateSlate.Seeds do
-
   def run() do
     alias PlateSlate.{Menu, Repo}
 
@@ -9,89 +8,107 @@ defmodule PlateSlate.Seeds do
 
     vegetarian =
       %Menu.ItemTag{name: "Vegetarian"}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _vegan =
       %Menu.ItemTag{name: "Vegan"}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _gluten_free =
       %Menu.ItemTag{name: "Gluten Free"}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     #
     # SANDWICHES
     #
 
-    sandwiches = %Menu.Category{name: "Sandwiches"} |> Repo.insert!
+    sandwiches = %Menu.Category{name: "Sandwiches"} |> Repo.insert!()
 
     _rueben =
       %Menu.Item{name: "Reuben", price: Decimal.from_float(4.50), category: sandwiches}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _croque =
       %Menu.Item{name: "Croque Monsieur", price: Decimal.from_float(5.50), category: sandwiches}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _muffuletta =
       %Menu.Item{name: "Muffuletta", price: Decimal.from_float(5.50), category: sandwiches}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _bahn_mi =
       %Menu.Item{name: "Bánh mì", price: Decimal.from_float(4.50), category: sandwiches}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _vada_pav =
-      %Menu.Item{name: "Vada Pav", price: Decimal.from_float(4.50), category: sandwiches, tags: [vegetarian]}
-      |> Repo.insert!
+      %Menu.Item{
+        name: "Vada Pav",
+        price: Decimal.from_float(4.50),
+        category: sandwiches,
+        tags: [vegetarian]
+      }
+      |> Repo.insert!()
 
     #
     # SIDES
     #
 
-    sides = %Menu.Category{name: "Sides"} |> Repo.insert!
+    sides = %Menu.Category{name: "Sides"} |> Repo.insert!()
 
     _fries =
       %Menu.Item{name: "French Fries", price: Decimal.from_float(2.50), category: sides}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _papadum =
       %Menu.Item{name: "Papadum", price: Decimal.from_float(1.25), category: sides}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _pasta_salad =
       %Menu.Item{name: "Pasta Salad", price: Decimal.from_float(2.50), category: sides}
-      |> Repo.insert!
+      |> Repo.insert!()
+
+    category = Repo.get_by(Menu.Category, name: "Sides")
+
+    %Menu.Item{
+      name: "Thai Salad",
+      price: 3.50,
+      category: category,
+      allergy_info: [
+        %{"allergen" => "Peanuts", "severity" => "Contains"},
+        %{"allergen" => "Shell Fish", "severity" => "Shared Equipment"}
+      ]
+    }
+    |> Repo.insert!()
 
     #
     # BEVERAGES
     #
 
-    beverages = %Menu.Category{name: "Beverages"} |> Repo.insert!
+    beverages = %Menu.Category{name: "Beverages"} |> Repo.insert!()
 
     _water =
       %Menu.Item{name: "Water", price: 0, category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _soda =
       %Menu.Item{name: "Soft Drink", price: Decimal.from_float(1.5), category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _lemonade =
       %Menu.Item{name: "Lemonade", price: Decimal.from_float(1.25), category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _chai =
       %Menu.Item{name: "Masala Chai", price: Decimal.from_float(1.5), category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _vanilla_milkshake =
       %Menu.Item{name: "Vanilla Milkshake", price: Decimal.from_float(3.0), category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     _chocolate_milkshake =
       %Menu.Item{name: "Chocolate Milkshake", price: Decimal.from_float(3.0), category: beverages}
-      |> Repo.insert!
+      |> Repo.insert!()
 
     :ok
   end
