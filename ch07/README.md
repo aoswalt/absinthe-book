@@ -32,7 +32,7 @@ resolve &Resolvers.Menu.menu_items/3
 expands to
 
 ```elixir
-  middleware Absinthe.Resolution, &Resolvers.Menu.menu_items/3
+middleware Absinthe.Resolution, &Resolvers.Menu.menu_items/3
 ```
 
 This `Absinthe.Resolution` middleware has been the driving force behind how our resolvers have operated this whole time, building the arguments to our resolvers, calling them, and then interpreting the result we’ve returned (similar to Plug pipeline) (p. 125)
