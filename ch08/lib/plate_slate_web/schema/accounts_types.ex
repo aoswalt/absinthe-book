@@ -30,6 +30,17 @@ defmodule PlateSlateWeb.Schema.AccountsTypes do
     interface :user
     field :email, :string
     field :name, :string
-    field :orders, list_of(:order)
+    field :orders, list_of(:order) do
+      resolve fn customer, _, _ ->
+        import Ecto.Query
+
+        orders =
+          PlateSlate.Ordering.Order
+          |> where(customer_id: ^customer.id)
+          |> PlateSlate.Repo.all()
+
+        {:ok, orders}
+      end
+    end
   end
 end
