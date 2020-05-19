@@ -39,6 +39,8 @@ defmodule PlateSlateWeb.Schema.Mutation.CreateMenuItemTest do
       "categoryId" => category_id
     }
 
+    user = Factory.create_user("employee")
+    conn = auth_user(conn, user)
     conn = post(conn, "/api", query: @query, variables: %{"menuItem" => menu_item})
 
     assert json_response(conn, 200) == %{
@@ -55,6 +57,11 @@ defmodule PlateSlateWeb.Schema.Mutation.CreateMenuItemTest do
            }
   end
 
+  defp auth_user(conn, user) do
+    token = PlateSlateWeb.Authentication.sign(%{role: user.role, id: user.id})
+    put_req_header(conn, "authorization", "Bearer #{token}")
+  end
+
   test "creating a menu item with an existing name fails", %{conn: conn, category_id: category_id} do
     menu_item = %{
       "name" => "Reuben",
@@ -63,6 +70,8 @@ defmodule PlateSlateWeb.Schema.Mutation.CreateMenuItemTest do
       "categoryId" => category_id
     }
 
+    user = Factory.create_user("employee")
+    conn = auth_user(conn, user)
     conn = post(conn, "/api", query: @query, variables: %{"menuItem" => menu_item})
 
     assert json_response(conn, 200) == %{
@@ -74,6 +83,33 @@ defmodule PlateSlateWeb.Schema.Mutation.CreateMenuItemTest do
                  "menuItem" => nil
                }
              }
+           }
+  end
+
+  test "must be authorized as an employee to do menu item creation", %{
+    conn: conn,
+    category_id: category_id
+  } do
+    menu_item = %{
+      "name" => "Reuben",
+      "description" => "Roast beef, carmelized onions, horseradish, ...",
+      "price" => "5.75",
+      "categoryId" => category_id
+    }
+
+    user = Factory.create_user("customer")
+    conn = auth_user(conn, user)
+    conn = post(conn, "/api", query: @query, variables: %{"menuItem" => menu_item})
+
+    assert json_response(conn, 200) == %{
+             "data" => %{"createMenuItem" => nil},
+             "errors" => [
+               %{
+                 "locations" => [%{"column" => 0, "line" => 2}],
+                 "message" => "unauthorized",
+                 "path" => ["createMenuItem"]
+               }
+             ]
            }
   end
 end
