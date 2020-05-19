@@ -15,14 +15,8 @@ defmodule PlateSlateWeb.Resolvers.Menu do
   end
 
   def create_item(_, %{input: params}, %{context: context}) do
-    case context do
-      %{current_user: %{role: "employee"}} ->
-        with {:ok, item} <- Menu.create_item(params) do
-          {:ok, %{menu_item: item}}
-        end
-
-      _ ->
-        {:error, "unauthorized"}
+    with {:ok, item} <- Menu.create_item(params) do
+      {:ok, %{menu_item: item}}
     end
   end
 end
