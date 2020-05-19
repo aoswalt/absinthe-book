@@ -71,7 +71,7 @@ defmodule PlateSlate.Seeds do
 
     %Menu.Item{
       name: "Thai Salad",
-      price: 3.50,
+      price: Decimal.from_float(3.50),
       category: category,
       allergy_info: [
         %{"allergen" => "Peanuts", "severity" => "Contains"},
