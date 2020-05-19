@@ -215,7 +215,7 @@ Absinthe.run(doc, ContextExample.Schema, context: context)
 
 The context that you passed into the `Absinthe.run/3` call is the same context you accessed in the third argument to the resolution function of the greeting field (p. 149)
 
-Whatever we pass into the context is always made available as is in the resolution functions. Importantly, the context is always available in every field at every level and it’s this property that gives it it’s name: it’s the "context" in which execution is happening (p. 149)
+Whatever we pass into the context is always made available as is in the resolution functions. Importantly, the context is always available in every field at every level and it’s this property that gives it it’s name: it’s the "context" in which execution is happening (more flexible than `Plug.Conn`, which is only available at the controller) (p. 149)
 
 Our application code, however, does not explicitly call `Absinthe.run/3` but instead uses `Absinthe.Plug`, which executes the GraphQL documents that we receive over HTTP. We need to make sure that the context is set-up ahead of time so that it has what it needs to execute documents (p. 149)
 
