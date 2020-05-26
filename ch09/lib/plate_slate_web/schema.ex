@@ -4,6 +4,16 @@ defmodule PlateSlateWeb.Schema do
   alias PlateSlateWeb.Resolvers
   alias PlateSlateWeb.Schema.Middleware
 
+  def dataloader() do
+    alias PlateSlate.Menu
+    Dataloader.new()
+    |> Dataloader.add_source(Menu, Menu.data())
+  end
+
+  def context(ctx) do
+    Map.put(ctx, :loader, dataloader())
+  end
+
   def middleware(middleware, field, object) do
     middleware
     |> apply(:errors, field, object)
