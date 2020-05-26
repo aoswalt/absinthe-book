@@ -8,6 +8,7 @@ defmodule PlateSlateWeb.Schema do
     middleware
     |> apply(:errors, field, object)
     |> apply(:get_string, field, object)
+    |> apply(:debug, field, object)
   end
 
   defp apply(middleware, :errors, _field, %{identifier: :mutation}) do
@@ -16,6 +17,14 @@ defmodule PlateSlateWeb.Schema do
 
   defp apply([], :get_string, field, %{identifier: :allergy_info}) do
     [{Absinthe.Middleware.MapGet, to_string(field.identifier)}]
+  end
+
+  defp apply(middleware, :debug, _field, _object) do
+    if System.get_env("DEBUG") do
+      [{Middleware.Debug, :start}] ++ middleware
+    else
+      middleware
+    end
   end
 
   defp apply(middleware, _, _, _) do
