@@ -10,6 +10,8 @@ A _phase_ is simply a module that has a `run/2` function, accepting an input and
 
 After the `%Absinthe.Blueprint{}` struct is created, the rest of the document processing pipeline centers on the manipulation of the blueprint, passed from phase to phase (p. 168)
 
+![Absinthe Pipeline](../images/ch09_absinthe-pipeline.png "Absinthe Pipeline")
+
 Broadly speaking Absinthe phases fall into three categories: (p. 168)
 * Preparation phases
 * Execution phases
@@ -143,7 +145,7 @@ The callback _pipeline_ allows our plugin to have the option to tell Absinthe to
 
 If the flag been set to true then we know there are async fields happening, and we need to go back to await them. If the it is false then, as far as this plugin is concerned there's nothing more to be done, so we leave the pipeline alone (p. 180)
 
-![Plugin Resolution Pipeline](./path/to/img.png "Plugin Resolution Pipeline")
+![Resolution Phases](../images/ch09_resolution-phases.png "Resolution Phases")
 
 As Absinthe walks through the document it will come across the first suspended field, calling whatever remaining middleware exists on that field (p. 181)
 
