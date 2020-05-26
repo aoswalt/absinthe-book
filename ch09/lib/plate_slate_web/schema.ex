@@ -14,6 +14,10 @@ defmodule PlateSlateWeb.Schema do
     Map.put(ctx, :loader, dataloader())
   end
 
+  def plugins() do
+    [Absinthe.Middleware.Dataloader | Absinthe.Plugin.defaults()]
+  end
+
   def middleware(middleware, field, object) do
     middleware
     |> apply(:errors, field, object)
