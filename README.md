@@ -12,3 +12,4 @@ Each chapter has my notes and the final code after working through it.
 * [Chapter 6 - Going Live With Subscriptions](./ch06/README.md)
 * [Chapter 7 - Resolution Middleware](./ch07/README.md)
 * [Chapter 8 - Securing with Authentication and Authorization](./ch08/README.md)
+* [Chapter 9 - Tuning Resolution](./ch09/README.md)
