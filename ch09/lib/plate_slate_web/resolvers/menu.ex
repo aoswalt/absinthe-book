@@ -7,9 +7,13 @@ defmodule PlateSlateWeb.Resolvers.Menu do
     {:ok, Menu.list_items(args)}
   end
 
-  def items_for_category(category, _, _) do
-    query = Ecto.assoc(category, :items)
-    {:ok, PlateSlate.Repo.all(query)}
+  def items_for_category(category, args, %{context: %{loader: loader}}) do
+    loader
+    |> Dataloader.load(Menu, {:items, args}, category)
+    |> on_load(fn loader ->
+      items = Dataloader.get(loader, Menu, {:items, args}, category)
+      {:ok, items}
+    end)
   end
 
   def category_for_item(menu_item, _, %{context: %{loader: loader}}) do

@@ -4,12 +4,17 @@ defmodule PlateSlate.Menu do
   """
 
   import Ecto.Query, warn: false
-  alias PlateSlate.Repo
 
+  alias PlateSlate.Repo
   alias PlateSlate.Menu.Category
+  alias PlateSlate.Menu.Item
 
   def data() do
     Dataloader.Ecto.new(Repo, query: &query/2)
+  end
+
+  def query(Item, args) do
+    items_query(args)
   end
 
   def query(queryable, _) do
@@ -134,14 +139,18 @@ defmodule PlateSlate.Menu do
 
   def list_items(args) do
     args
-    |> Enum.reduce(Item, fn
+    |> items_query()
+    |> Repo.all()
+  end
+
+  defp items_query(args) do
+    Enum.reduce(args, Item, fn
       {:order, order}, query ->
         query |> order_by({^order, :name})
 
       {:filter, filter}, query ->
         query |> filter_with(filter)
     end)
-    |> Repo.all()
   end
 
   defp filter_with(query, filter) do
