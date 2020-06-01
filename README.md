@@ -13,3 +13,4 @@ Each chapter has my notes and the final code after working through it.
 * [Chapter 7 - Resolution Middleware](./ch07/README.md)
 * [Chapter 8 - Securing with Authentication and Authorization](./ch08/README.md)
 * [Chapter 9 - Tuning Resolution](./ch09/README.md)
+* [Chapter 10 - Driving Phoenix Actions with GraphQL](./ch10/README.md)
