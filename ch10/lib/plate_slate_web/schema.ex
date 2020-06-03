@@ -104,6 +104,11 @@ defmodule PlateSlateWeb.Schema do
       arg :matching, non_null(:string)
       resolve &Resolvers.Menu.search/3
     end
+
+    field :menu_item, :menu_item do
+      arg :id, non_null(:id)
+      resolve &Resolvers.Menu.get_item/3
+    end
   end
 
   mutation do
