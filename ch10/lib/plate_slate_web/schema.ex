@@ -48,6 +48,7 @@ defmodule PlateSlateWeb.Schema do
   import_types __MODULE__.AccountsTypes
   import_types __MODULE__.MenuTypes
   import_types __MODULE__.OrderingTypes
+  import_types Absinthe.Phoenix.Types
 
   enum :sort_order do
     value :asc
