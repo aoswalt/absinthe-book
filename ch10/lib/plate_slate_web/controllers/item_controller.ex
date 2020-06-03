@@ -4,7 +4,9 @@ defmodule PlateSlateWeb.ItemController do
 
   @graphql """
   query Index @action(mode: INTERNAL) {
-    menu_items
+    menu_items @put {
+      category
+    }
   }
   """
   def index(conn, result) do

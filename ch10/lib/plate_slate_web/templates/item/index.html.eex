@@ -3,6 +3,8 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Menu Item</th>
+      <th>Category</th>
       <th></th>
     </tr>
   </thead>
@@ -10,6 +12,7 @@
 <%= for item <- @items do %>
     <tr>
       <td><%= item.name %></id>
+      <td><%= item.category.name %></id>
       <td class="text-right">
         <span>
           <%= link "Show",
@@ -28,7 +31,7 @@
             to: item_path(@conn, :delete, item),
             method: :delete,
             data: [confirm: "Are you sure?"],
-            class: "btn btn-default btn-xs"
+            class: "btn btn-danger btn-xs"
           %>
         </span>
       </td>
