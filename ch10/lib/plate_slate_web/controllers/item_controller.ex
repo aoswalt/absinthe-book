@@ -1,9 +1,11 @@
 defmodule PlateSlateWeb.ItemController do
   use PlateSlateWeb, :controller
-  use Absinthe.Phoenix.Controller, schema: PlateSlateWeb.Schema
+  use Absinthe.Phoenix.Controller,
+    schema: PlateSlateWeb.Schema,
+    action: [mode: :internal]
 
   @graphql """
-  query Index @action(mode: INTERNAL) {
+  query {
     menu_items @put {
       category
     }
