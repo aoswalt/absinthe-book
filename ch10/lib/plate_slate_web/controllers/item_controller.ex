@@ -8,6 +8,9 @@ defmodule PlateSlateWeb.ItemController do
   query {
     menu_items @put {
       category
+      order_history {
+        quantity
+      }
     }
   }
   """

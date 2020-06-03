@@ -5,6 +5,7 @@
     <tr>
       <th>Menu Item</th>
       <th>Category</th>
+      <th>Quantity</th>
       <th></th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
     <tr>
       <td><%= item.name %></id>
       <td><%= item.category.name %></id>
+      <td><%= item.order_history.quantity %></id>
       <td class="text-right">
         <span>
           <%= link "Show",
